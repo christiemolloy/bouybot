@@ -4,8 +4,7 @@ import { WaterIcon, CloudShowersHeavyIcon, BoltIcon } from '@patternfly/react-ic
 import customData from './../../dummyData.json';
 
 const WaveConditions = () => {
-  const conditionData = customData.data[0].waveConditions;
-  console.log(conditionData);
+  const waveConditionData = customData.data[0].waveConditions;
 
   const checkCondition = (condition) => {
     if(condition === 'calm') {
@@ -22,11 +21,14 @@ const WaveConditions = () => {
   return (
     <React.Fragment>
       <PageSection>
-        <Title size="2xl">Wave Conditions:</Title>
+        <Title size="2xl">
+          Wave Conditions: 
+          <span>{waveConditionData}</span>
+        </Title>
       </PageSection>
-      <PageSection>
-        <div style={{ fontSize: '100px'}}>
-          {checkCondition(conditionData)}
+      <PageSection style={{ textAlign: 'center' }}>
+        <div style={{ fontSize: '200px'}}>
+          {checkCondition(waveConditionData)}
         </div>
       </PageSection>
     </React.Fragment>

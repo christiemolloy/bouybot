@@ -6,8 +6,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import customData from './../../dummyData.json';
 
 const Dashboard = () => {
+
+  const dashboardDataTemperature = customData.data[0].temperature;
+  const dashboardDataPh = customData.data[0].ph;
+
   return (
     <Router>
       <PageSection>
@@ -22,16 +27,16 @@ const Dashboard = () => {
               <Link to="/temperature">
                 Temperature
               </Link>
+              <p>{dashboardDataTemperature}</p>
             </Title>
-            <div>0</div>
           </LevelItem>
           <LevelItem>
             <Title size="2xl">
               <Link to="/phlevels">
                 Ph
               </Link>
+              <p>{dashboardDataPh}</p>
             </Title>
-            <div>0</div>
           </LevelItem>
         </Level>
       </PageSection>

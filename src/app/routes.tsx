@@ -4,7 +4,7 @@ import { Alert, PageSection } from '@patternfly/react-core';
 import { DynamicImport } from '@app/DynamicImport';
 import { accessibleRouteChangeHandler } from '@app/utils/utils';
 import { Dashboard } from '@app/Dashboard/Dashboard';
-import { Temperature } from '@app/Temperature/Temperature';
+import Temperature from '@app/Temperature/Temperature';
 import PHLevels from '@app/PHLevels/PHLevels';
 import WaveConditions from '@app/WaveConditions/WaveConditions';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
