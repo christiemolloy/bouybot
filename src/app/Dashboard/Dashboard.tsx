@@ -12,12 +12,14 @@ const Dashboard = () => {
 
   const dashboardDataTemperature = customData.data[0].temperature;
   const dashboardDataPh = customData.data[0].ph;
+  const dashboardDataWaveConditions = customData.data[0].waveConditions;
 
   return (
     <Router>
       <PageSection>
         <Title size="2xl">
             Wave conditions: 
+            <p>{dashboardDataWaveConditions}</p>
           </Title>
       </PageSection>
       <PageSection>
