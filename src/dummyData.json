@@ -1,0 +1,9 @@
+{
+  "data": [
+    {
+      "temperature": 17,
+      "ph": 6,
+      "waveConditions": "calm"
+    }
+  ]
+}
