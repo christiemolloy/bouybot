@@ -78,7 +78,7 @@ const routes: IAppRoute[] = [
     component: WaveConditions,
     exact: true,
     isAsync: true,
-    label: 'Wave conditions',
+    label: 'Wave Conditions',
     path: '/waveconditions',
     title: 'Wave conditions Page Title'
   }

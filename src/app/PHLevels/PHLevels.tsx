@@ -1,79 +1,111 @@
 import React, {useState} from 'react';
 import {
-  Dropdown,
-  DropdownToggle,
-  DropdownItem,
-  DropdownSeparator,
-  DropdownPosition,
-  DropdownDirection,
-  KebabToggle,
+  Select,
+  SelectVariant,
+  SelectOption,
   PageSection,
   Title
 } from '@patternfly/react-core';
-import { CaretDownIcon } from '@patternfly/react-icons';
 import customData from './../../dummyData.json';
+import custompHData from './../../dummyDataPHLevels.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
+import './pHLevels.css';
 
 const PHLevels = () => {
 
-  const [dropdownState, setDropdownState] = useState(false);
+  // state
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [selected, setSelected] = useState('');
+  const [pHGraphDataState, setpHGraphDataState] = useState(custompHData["1Hour"]);
 
-  const conditionData = customData.data[0].ph;
+  // data
+  const phData = customData.data[0].ph;
 
-  const onSelect = event => {
-    setDropdownState(!dropdownState);
-    // this.onFocus();
+  // pass data based on selection
+  function pHGraphData(selectedState) {
+    if(selectedState == '5 Hours') {
+      return setpHGraphDataState(custompHData["5Hours"]);
+    }
+    else if(selectedState == '1 Week') {
+      return setpHGraphDataState(custompHData["1Week"]);
+    }
+    else if(selectedState == '1 Month') {
+      return setpHGraphDataState(custompHData["1Month"]);
+    }
+    else if(selectedState == '3 Months') {
+      return setpHGraphDataState(custompHData["3Months"]);
+    }
+    else if(selectedState == '6 Months') {
+      return setpHGraphDataState(custompHData["6Months"]);
+    }
+    else if(selectedState == '1 Year') {
+      return setpHGraphDataState(custompHData["1Year"]);
+    }
+    else {
+      return setpHGraphDataState(custompHData["1Hour"]);
+    }
+  }
+
+  const onToggle = isExpanded => {
+    setIsExpanded(isExpanded);
   };
 
-  const onToggle = dropdownState => {
-    setDropdownState(dropdownState);
+  const onSelect = (event, selection, isPlaceholder) => {
+    if (isPlaceholder) {
+      clearSelection();
+    }
+    else {
+      setSelected(selection);
+      pHGraphData(selection);
+      setIsExpanded(false);
+      console.log('selected:', selection);
+    }
   };
 
-  const dropdownItems = [
-    <DropdownItem key="action" component="button">
-      1 Hour
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      5 Hours
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      1 Week
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      1 Month
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      3 Months
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      6 Months
-    </DropdownItem>,
-    <DropdownItem key="action" component="button">
-      1 Year
-    </DropdownItem>
+  const clearSelection = () => {
+    setSelected('');
+    setIsExpanded(false);
+  };
+
+  const options = [
+    { value: '1 Hour', disabled: false, isPlaceholder: true },
+    { value: '5 Hours', disabled: false },
+    { value: '1 Week', disabled: false },
+    { value: '1 Month', disabled: false },
+    { value: '6 Months', disabled: false },
+    { value: '1 Year', disabled: false }
   ];
 
   return (
     <React.Fragment>
       <PageSection>
         <Title size="2xl">
-          pH: {conditionData}
+          pH Levels:
+          <span> {phData}</span>
         </Title>
       </PageSection>
       <PageSection>
-        <Dropdown
-          onSelect={onSelect}
-          dropdownItems={dropdownItems}
-          isOpen={dropdownState}
-          toggle={
-            <DropdownToggle id="toggle-id" onToggle={onToggle} iconComponent={CaretDownIcon}>
-              Dropdown
-            </DropdownToggle>
-          }
-        />
+      <Select
+        className="app-select"
+        variant={SelectVariant.single}
+        aria-label="Select Input"
+        onToggle={onToggle}
+        onSelect={onSelect}
+        selections={selected}
+        isExpanded={isExpanded}
+      >
+       {options.map((option, index) => (
+          <SelectOption
+            isDisabled={option.disabled}
+            key={index}
+            value={option.value}
+            isPlaceholder={option.isPlaceholder}
+          />
+          ))}
+      </Select>
       <div style={{ height: '250px', width: '600px' }}>
         <Chart
-          ariaDesc="Average number of pets"
+          ariaDesc="Chart"
           ariaTitle="Line chart example"
           containerComponent={<ChartVoronoiContainer labels={({ datum }) => `${datum.name}: ${datum.y}`} constrainToVisibleArea />}
           height={250}
@@ -91,48 +123,14 @@ const PHLevels = () => {
           <ChartAxis dependentAxis showGrid tickValues={[2, 5, 8]} />
           <ChartGroup>
             <ChartLine
-              data={[
-                { name: 'Cats', x: '2015', y: 1 },
-                { name: 'Cats', x: '2016', y: 2 },
-                { name: 'Cats', x: '2017', y: 5 },
-                { name: 'Cats', x: '2018', y: 3 }
-              ]}
-            />
-            <ChartLine
-              data={[
-                { name: 'Dogs', x: '2015', y: 2 },
-                { name: 'Dogs', x: '2016', y: 1 },
-                { name: 'Dogs', x: '2017', y: 7 },
-                { name: 'Dogs', x: '2018', y: 4 }
-              ]}
-              style={{
-                data: {
-                  strokeDasharray: '3,3'
-                }
-              }}
-            />
-            <ChartLine
-              data={[
-                { name: 'Birds', x: '2015', y: 3 },
-                { name: 'Birds', x: '2016', y: 4 },
-                { name: 'Birds', x: '2017', y: 9 },
-                { name: 'Birds', x: '2018', y: 5 }
-              ]}
-            />
-            <ChartLine
-              data={[
-                { name: 'Mice', x: '2015', y: 3 },
-                { name: 'Mice', x: '2016', y: 3 },
-                { name: 'Mice', x: '2017', y: 8 },
-                { name: 'Mice', x: '2018', y: 7 }
-              ]}
+              data={pHGraphDataState}
             />
           </ChartGroup>
         </Chart>
         </div>
       </PageSection>
     </React.Fragment>
-  )
-  };
+  );
+};
 
 export default PHLevels;

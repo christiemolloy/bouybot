@@ -17,10 +17,6 @@ interface IAppLayout {
 }
 
 const AppLayout: React.FunctionComponent<IAppLayout> = ({children}) => {
-  const logoProps = {
-    href: '/',
-    target: '_blank'
-  };
   const [isNavOpen, setIsNavOpen] = React.useState(true);
   const [isMobileView, setIsMobileView] = React.useState(true);
   const [isNavOpenMobile, setIsNavOpenMobile] = React.useState(false);
@@ -36,7 +32,6 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({children}) => {
   const Header = (
     <PageHeader
       logo="BuoyBot"
-      logoProps={logoProps}
       showNavToggle
       isNavOpen={isNavOpen}
       onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
