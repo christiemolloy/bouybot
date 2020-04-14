@@ -1,7 +1,7 @@
 {
   "name": "patternfly-seed",
   "version": "0.0.1",
-  "homepage": "https://github.com/christiemolloy/bouybot",
+  "homepage": "www.buoybot.com",
   "description": "An open source build scaffolding utility for web apps.",
   "main": "server.js",
   "repository": "https://github.com/patternfly/patternfly-react-seed.git",
