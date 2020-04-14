@@ -24,9 +24,9 @@ const Dashboard = () => {
     <Switch>
       <PageSection>
         <Title size="2xl">
-          <Route path={routePathWaveConditions}>
+          <a href="www.buoybot.com/waveconditions">
             Wave conditions:
-          </Route>
+          </a>
           <span> {dashboardDataWaveConditions}</span>
         </Title>
       </PageSection>
