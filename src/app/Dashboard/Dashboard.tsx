@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, PageSection, Title, Level, LevelItem } from '@patternfly/react-core';
+import { NavLink } from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Link,
@@ -24,9 +25,9 @@ const Dashboard = () => {
     <Switch>
       <PageSection>
         <Title size="2xl">
-          <a href="www.buoybot.com/waveconditions">
+          <NavLink exact to={routePathWaveConditions}>
             Wave conditions:
-          </a>
+          </NavLink>
           <span> {dashboardDataWaveConditions}</span>
         </Title>
       </PageSection>
@@ -34,17 +35,17 @@ const Dashboard = () => {
         <Level style={{ justifyContent: 'space-around' }}>
           <LevelItem style={{ textAlign: 'center' }}>
             <Title size="2xl">
-              <Route path={routePathTemperature}>
+              <NavLink exact to={routePathTemperature}>
                 Temperature
-              </Route>
+              </NavLink>
               <p>{dashboardDataTemperature} C</p>
             </Title>
           </LevelItem>
           <LevelItem>
             <Title size="2xl">
-              <Route path={routePathPh}>
+              <NavLink exact to={routePathPh}>
                 pH
-              </Route>
+              </NavLink>
               <p>{dashboardDataPh}</p>
             </Title>
           </LevelItem>
