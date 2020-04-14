@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Button, PageSection, Title, Level, LevelItem } from '@patternfly/react-core';
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  Link
 } from "react-router-dom";
 import customData from './../../dummyData.json';
 import { routes } from '@app/routes';
@@ -21,9 +22,9 @@ const Dashboard = () => {
     <Router>
       <PageSection>
         <Title size="2xl">
-          <a href={routePathWaveConditions}>
+          <Link to={routePathWaveConditions}>
             Wave conditions: 
-          </a>
+          </Link>
           <span> {dashboardDataWaveConditions}</span>
         </Title>
       </PageSection>
@@ -31,17 +32,17 @@ const Dashboard = () => {
         <Level style={{ justifyContent: 'space-around' }}>
           <LevelItem style={{ textAlign: 'center' }}>
             <Title size="2xl">
-              <a href={routePathTemperature}>
+              <Link to={routePathTemperature}>
                 Temperature
-              </a>
+              </Link>
               <p>{dashboardDataTemperature} C</p>
             </Title>
           </LevelItem>
           <LevelItem>
             <Title size="2xl">
-              <a href={routePathPh}>
+              <Link to={routePathPh}>
                 pH
-              </a>
+              </Link>
               <p>{dashboardDataPh}</p>
             </Title>
           </LevelItem>
