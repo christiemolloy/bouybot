@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Button, PageSection, Title, Level, LevelItem } from '@patternfly/react-core';
 import {
   BrowserRouter as Router,
-  Link
+  Link,
+  Route
 } from "react-router-dom";
 import customData from './../../dummyData.json';
 import { routes } from '@app/routes';
@@ -22,9 +23,9 @@ const Dashboard = () => {
     <Router>
       <PageSection>
         <Title size="2xl">
-          <Link to={routePathWaveConditions}>
-            Wave conditions: 
-          </Link>
+          <Route path={routePathWaveConditions}>
+            Wave conditions:
+          </Route>
           <span> {dashboardDataWaveConditions}</span>
         </Title>
       </PageSection>
