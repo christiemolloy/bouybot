@@ -3,7 +3,8 @@ import { Button, PageSection, Title, Level, LevelItem } from '@patternfly/react-
 import {
   BrowserRouter as Router,
   Link,
-  Route
+  Route,
+  Switch
 } from "react-router-dom";
 import customData from './../../dummyData.json';
 import { routes } from '@app/routes';
@@ -20,7 +21,7 @@ const Dashboard = () => {
   const routePathWaveConditions = routes[3].path;
 
   return (
-    <Router>
+    <Switch>
       <PageSection>
         <Title size="2xl">
           <Route path={routePathWaveConditions}>
@@ -33,23 +34,23 @@ const Dashboard = () => {
         <Level style={{ justifyContent: 'space-around' }}>
           <LevelItem style={{ textAlign: 'center' }}>
             <Title size="2xl">
-              <Link to={routePathTemperature}>
+              <Route path={routePathTemperature}>
                 Temperature
-              </Link>
+              </Route>
               <p>{dashboardDataTemperature} C</p>
             </Title>
           </LevelItem>
           <LevelItem>
             <Title size="2xl">
-              <Link to={routePathPh}>
+              <Route path={routePathPh}>
                 pH
-              </Link>
+              </Route>
               <p>{dashboardDataPh}</p>
             </Title>
           </LevelItem>
         </Level>
       </PageSection>
-    </Router>
+    </Switch>
   );
 };
 
