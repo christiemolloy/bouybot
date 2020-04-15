@@ -6,11 +6,9 @@ import { AppRoutes } from '@app/routes';
 import '@app/app.css';
 
 const App: React.FunctionComponent = () => (
-  <Router>
     <AppLayout>
       <AppRoutes />
     </AppLayout>
-  </Router>
 );
 
 export { App };
