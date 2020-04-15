@@ -22,7 +22,7 @@ const Dashboard = () => {
   const routePathWaveConditions = routes[3].path;
 
   return (
-    <Switch>
+    <React.Fragment>
       <PageSection>
         <Title size="2xl">
           <NavLink exact to={routePathWaveConditions}>
@@ -51,7 +51,7 @@ const Dashboard = () => {
           </LevelItem>
         </Level>
       </PageSection>
-    </Switch>
+      </React.Fragment>
   );
 };
 
