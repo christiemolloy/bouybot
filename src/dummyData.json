@@ -1,6 +1,10 @@
 
 {
   "data": [
-   {"orientX": 194, "orientY": 0, "orientZ": -177, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:43:10 2020"},{"orientX": 202, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:47:25 2020"},{"orientX": 202, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:49:03 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:49:31 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:49:42 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:49:53 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:50:03 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:50:14 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:50:25 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:50:35 2020"},{"orientX": 201, "orientY": 0, "orientZ": -176, "accelX": 0, "accelY": 0, "accelZ": -9, "temp": 23, "time": "Mon Apr 13 19:50:36 2020"}
+    {
+      "temperature": 17,
+      "ph": 6,
+      "waveConditions": "calm"
+    }
   ]
 }
