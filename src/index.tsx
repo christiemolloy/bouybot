@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from '@app/index';
+import { BrowserRouter as Router } from "react-router-dom";
 
 if (process.env.NODE_ENV !== "production") {
   const config = {
@@ -16,4 +17,4 @@ if (process.env.NODE_ENV !== "production") {
   axe(React, ReactDOM, 1000, config);
 }
 
-ReactDOM.render(<App />, document.getElementById("root") as HTMLElement);
+ReactDOM.render(<Router basename={process.env.PUBLIC_URL}><App /></Router>, document.getElementById("root") as HTMLElement);

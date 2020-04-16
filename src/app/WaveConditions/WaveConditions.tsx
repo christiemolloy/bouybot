@@ -23,7 +23,7 @@ const WaveConditions = () => {
       <PageSection>
         <Title size="2xl">
           Wave Conditions: 
-          <span>{waveConditionData}</span>
+          <span> {waveConditionData}</span>
         </Title>
       </PageSection>
       <PageSection style={{ textAlign: 'center' }}>

@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { PageSection, Title, Level, LevelItem } from '@patternfly/react-core';
+import { Button, PageSection, Title, Level, LevelItem } from '@patternfly/react-core';
+import { NavLink } from 'react-router-dom';
 import {
   BrowserRouter as Router,
-  Switch,
+  Link,
   Route,
-  Link
+  Switch
 } from "react-router-dom";
 import customData from './../../dummyData.json';
+import { routes } from '@app/routes';
+import './Dashboard.css';
 
 const Dashboard = () => {
 
@@ -14,35 +17,41 @@ const Dashboard = () => {
   const dashboardDataPh = customData.data[0].ph;
   const dashboardDataWaveConditions = customData.data[0].waveConditions;
 
+  const routePathTemperature = routes[1].path;
+  const routePathPh = routes[2].path;
+  const routePathWaveConditions = routes[3].path;
+
   return (
-    <Router>
+    <React.Fragment>
       <PageSection>
         <Title size="2xl">
-            Wave conditions: 
-            <p>{dashboardDataWaveConditions}</p>
-          </Title>
+          <NavLink exact to={routePathWaveConditions}>
+            Wave conditions:
+          </NavLink>
+          <span> {dashboardDataWaveConditions}</span>
+        </Title>
       </PageSection>
       <PageSection>
         <Level style={{ justifyContent: 'space-around' }}>
           <LevelItem style={{ textAlign: 'center' }}>
             <Title size="2xl">
-              <Link to="/temperature">
+              <NavLink exact to={routePathTemperature}>
                 Temperature
-              </Link>
-              <p>{dashboardDataTemperature}</p>
+              </NavLink>
+              <p>{dashboardDataTemperature} C</p>
             </Title>
           </LevelItem>
           <LevelItem>
             <Title size="2xl">
-              <Link to="/phlevels">
-                Ph
-              </Link>
+              <NavLink exact to={routePathPh}>
+                pH
+              </NavLink>
               <p>{dashboardDataPh}</p>
             </Title>
           </LevelItem>
         </Level>
       </PageSection>
-    </Router>
+      </React.Fragment>
   );
 };
 
