@@ -6,10 +6,8 @@ import customData from './../../data.json';
 const WaveConditions = () => {
   const waveConditionData = customData.data[0].accelZ;
 
-  const checkCondition = (condition) => {
-    if(condition >> 20) {
-      return <WaterIcon/>
-    }
+  const checkCondition = (condition: number) => {
+ 
     if(condition >> 15) {
       return <BoltIcon/>
     }
