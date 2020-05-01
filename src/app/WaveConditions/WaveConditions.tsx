@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { PageSection, Title } from '@patternfly/react-core';
 import { WaterIcon, CloudShowersHeavyIcon, BoltIcon } from '@patternfly/react-icons';
-import customData from './../../dummyData.json';
+import customData from './../../data.json';
 
 const WaveConditions = () => {
-  const waveConditionData = customData.data[0].waveConditions;
+  const waveConditionData = customData.data[0].accelZ;
 
   const checkCondition = (condition) => {
-    if(condition === 'calm') {
+    if(condition >> 20) {
       return <WaterIcon/>
     }
-    if(condition === 'rough') {
+    if(condition >> 15) {
       return <BoltIcon/>
     }
-    if(condition === 'stormy') {
+    if(condition << 15) {
       return <CloudShowersHeavyIcon/>
     }
   };

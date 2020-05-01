@@ -7,7 +7,7 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import customData from './../../dummyData.json';
+import customData from './../../data.json';
 import { routes } from '@app/routes';
 import './Dashboard.css';
 
