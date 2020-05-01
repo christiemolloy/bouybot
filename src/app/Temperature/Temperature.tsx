@@ -6,7 +6,7 @@ import {
   PageSection,
   Title
 } from '@patternfly/react-core';
-import customData from './../../dummyData.json';
+import realData from './../../data.json';
 import customTemperatureData from './../../dummyDataTemperature.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './Temperature.css';
@@ -18,8 +18,16 @@ const Temperature = () => {
   const [selected, setSelected] = useState('');
   const [temperatureGraphDataState, setTemperatureGraphDataState] = useState(customTemperatureData["1Hour"]);
 
-  // data
-  const temperatureData = customData.data[0].temperature;
+  const temperatureData = realData.data[realData.data.length - 1].temp;
+
+  // create new array and push the new objects to pass through to the chart
+  const chartData: object[] = [];
+  realData.data.forEach((element, index) => {
+    const newObject = { name: index, x: index, y: element.temp };
+    chartData.push(newObject);
+  });
+
+  console.log('what is chartdata' + chartData);
 
   // pass data based on selection
   function temperatureGraphData(selectedState) {
@@ -113,7 +121,7 @@ const Temperature = () => {
           ariaTitle="Line chart example"
           containerComponent={<ChartVoronoiContainer labels={({ datum }) => `${datum.name}: ${datum.y}`} constrainToVisibleArea />}
           height={250}
-          maxDomain={{y: 10}}
+          maxDomain={{y: 50}}
           minDomain={{y: 0}}
           padding={{
             bottom: 50,
@@ -127,7 +135,7 @@ const Temperature = () => {
           <ChartAxis dependentAxis showGrid tickValues={[2, 5, 8]} />
           <ChartGroup>
             <ChartLine
-              data={temperatureGraphDataState}
+              data={chartData}
             />
           </ChartGroup>
         </Chart>

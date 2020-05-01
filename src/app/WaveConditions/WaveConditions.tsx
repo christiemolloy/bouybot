@@ -4,15 +4,20 @@ import { WaterIcon, CloudShowersHeavyIcon, BoltIcon } from '@patternfly/react-ic
 import customData from './../../data.json';
 
 const WaveConditions = () => {
-  const waveConditionData = customData.data[0].accelZ;
+  const waveConditionData = customData.data[customData.data.length - 1].accelZ;
+
+  console.log(customData.data.length);
 
   const checkCondition = (condition: number) => {
  
-    if(condition >> 15) {
+    if(condition >= 15) {
       return <BoltIcon/>
     }
-    if(condition << 15) {
+    if(condition >= 10 && condition < 15 ) {
       return <CloudShowersHeavyIcon/>
+    }
+    if(condition > 0 && condition < 10) {
+      return <WaterIcon/>
     }
   };
 
