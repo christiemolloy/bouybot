@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageSection, Title } from '@patternfly/react-core';
 import { WaterIcon, CloudShowersHeavyIcon, BoltIcon } from '@patternfly/react-icons';
-import customData from './../../data.json';
+import customData from './../data.json';
 
 const WaveConditions = () => {
   const waveConditionData = customData.data[customData.data.length - 1].accelZ;

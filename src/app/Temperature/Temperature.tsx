@@ -6,8 +6,8 @@ import {
   PageSection,
   Title
 } from '@patternfly/react-core';
-import realData from './../../data.json';
-import realTemperatureData from './../../data.json';
+import realData from './../data.json';
+import realTemperatureData from './../data.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './Temperature.css';
 
