@@ -7,7 +7,7 @@ import {
   Title
 } from '@patternfly/react-core';
 import realData from './../../data.json';
-import customTemperatureData from './../../dummyDataTemperature.json';
+import realTemperatureData from './../../data.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './Temperature.css';
 
@@ -16,7 +16,7 @@ const Temperature = () => {
   // state
   const [isExpanded, setIsExpanded] = useState(false);
   const [selected, setSelected] = useState('');
-  const [temperatureGraphDataState, setTemperatureGraphDataState] = useState(customTemperatureData["1Hour"]);
+  const [temperatureGraphDataState, setTemperatureGraphDataState] = useState(realTemperatureData["1Hour"]);
 
   const temperatureData = realData.data[realData.data.length - 1].temp;
 
@@ -32,25 +32,25 @@ const Temperature = () => {
   // pass data based on selection
   function temperatureGraphData(selectedState) {
     if(selectedState == '5 Hours') {
-      return setTemperatureGraphDataState(customTemperatureData["5Hours"]);
+      return setTemperatureGraphDataState(realTemperatureData["5Hours"]);
     }
     else if(selectedState == '1 Week') {
-      return setTemperatureGraphDataState(customTemperatureData["1Week"]);
+      return setTemperatureGraphDataState(realTemperatureData["1Week"]);
     }
     else if(selectedState == '1 Month') {
-      return setTemperatureGraphDataState(customTemperatureData["1Month"]);
+      return setTemperatureGraphDataState(realTemperatureData["1Month"]);
     }
     else if(selectedState == '3 Months') {
-      return setTemperatureGraphDataState(customTemperatureData["3Months"]);
+      return setTemperatureGraphDataState(realTemperatureData["3Months"]);
     }
     else if(selectedState == '6 Months') {
-      return setTemperatureGraphDataState(customTemperatureData["6Months"]);
+      return setTemperatureGraphDataState(realTemperatureData["6Months"]);
     }
     else if(selectedState == '1 Year') {
-      return setTemperatureGraphDataState(customTemperatureData["1Year"]);
+      return setTemperatureGraphDataState(realTemperatureData["1Year"]);
     }
     else {
-      return setTemperatureGraphDataState(customTemperatureData["1Hour"]);
+      return setTemperatureGraphDataState(realTemperatureData["1Hour"]);
     }
   }
 
