@@ -7,7 +7,7 @@ import {
   Title
 } from '@patternfly/react-core';
 import realData from './../../data.json';
-import custompHData from './../../dummyDataPHLevels.json';
+import realpHData from './../../data.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './pHLevels.css';
 
@@ -16,7 +16,7 @@ const PHLevels = () => {
   // state
   const [isExpanded, setIsExpanded] = useState(false);
   const [selected, setSelected] = useState('');
-  const [pHGraphDataState, setpHGraphDataState] = useState(custompHData["1Hour"]);
+  const [pHGraphDataState, setpHGraphDataState] = useState(realpHData["1Hour"]);
 
   const pHData = realData.data[realData.data.length - 1].pH;
 
@@ -31,25 +31,25 @@ const PHLevels = () => {
   // pass data based on selection
   function pHGraphData(selectedState) {
     if(selectedState == '5 Hours') {
-      return setpHGraphDataState(custompHData["5Hours"]);
+      return setpHGraphDataState(realpHData["5Hours"]);
     }
     else if(selectedState == '1 Week') {
-      return setpHGraphDataState(custompHData["1Week"]);
+      return setpHGraphDataState(realpHData["1Week"]);
     }
     else if(selectedState == '1 Month') {
-      return setpHGraphDataState(custompHData["1Month"]);
+      return setpHGraphDataState(realpHData["1Month"]);
     }
     else if(selectedState == '3 Months') {
-      return setpHGraphDataState(custompHData["3Months"]);
+      return setpHGraphDataState(realpHData["3Months"]);
     }
     else if(selectedState == '6 Months') {
-      return setpHGraphDataState(custompHData["6Months"]);
+      return setpHGraphDataState(realpHData["6Months"]);
     }
     else if(selectedState == '1 Year') {
-      return setpHGraphDataState(custompHData["1Year"]);
+      return setpHGraphDataState(realpHData["1Year"]);
     }
     else {
-      return setpHGraphDataState(custompHData["1Hour"]);
+      return setpHGraphDataState(realpHData["1Hour"]);
     }
   }
 
