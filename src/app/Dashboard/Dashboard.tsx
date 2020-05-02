@@ -14,8 +14,8 @@ import { WaterIcon, BoltIcon, CloudShowersHeavyIcon } from '@patternfly/react-ic
 
 const Dashboard = () => {
 
-  const dashboardDataTemperature = customData.data[0].temp;
-  const dashboardDataPh = customData.data[0].ph;
+  const dashboardDataTemperature = customData.data[customData.data.length - 1].temp;
+  const dashboardDataPh = customData.data[customData.data.length - 1].pH;
   const dashboardDataWaveConditions = customData.data[customData.data.length - 1].accelZ;
 
   
@@ -24,13 +24,13 @@ const Dashboard = () => {
     const checkCondition = (condition: number) => {
    
       if(condition >= 25) {
-        return <WaterIcon/>
+        return <BoltIcon/>
       }
-      if(condition >= 15 && condition < 25 ) {
+      else if(condition >= 15 && condition < 25 ) {
         return <CloudShowersHeavyIcon/>
       }
-      if(condition < 15) {
-        return <BoltIcon/>
+      else{
+        return <WaterIcon/>
       }
     };
 
