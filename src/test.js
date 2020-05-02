@@ -10,13 +10,13 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("SELECT * FROM final_3", function(err, result, feilds) {
-  	if(err) throw err;
-  	fs.writeFileSync('data.json', JSON.stringify(result), err => {
-  		if(err) throw (err);
-  		console.log('saved file');
-  	});
+});
+
+con.query("SELECT * FROM final_6", function(err, result, feilds) {
+  if(err) throw err;
+  fs.writeFileSync('data.json', "{\"data\": " + JSON.stringify(result) + "}", err => {
+    if(err) throw (err);
   });
 });
 
-con.destroy()
+con.end()

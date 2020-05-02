@@ -10,12 +10,29 @@ import {
 import customData from './../../data.json';
 import { routes } from '@app/routes';
 import './Dashboard.css';
+import { WaterIcon, BoltIcon, CloudShowersHeavyIcon } from '@patternfly/react-icons';
 
 const Dashboard = () => {
 
-  const dashboardDataTemperature = customData.data[0].temperature;
+  const dashboardDataTemperature = customData.data[0].temp;
   const dashboardDataPh = customData.data[0].ph;
-  const dashboardDataWaveConditions = customData.data[0].waveConditions;
+  const dashboardDataWaveConditions = customData.data[customData.data.length - 1].accelZ;
+
+  
+    console.log(customData.data.length);
+  
+    const checkCondition = (condition: number) => {
+   
+      if(condition >= 25) {
+        return <WaterIcon/>
+      }
+      if(condition >= 15 && condition < 25 ) {
+        return <CloudShowersHeavyIcon/>
+      }
+      if(condition < 15) {
+        return <BoltIcon/>
+      }
+    };
 
   const routePathTemperature = routes[1].path;
   const routePathPh = routes[2].path;

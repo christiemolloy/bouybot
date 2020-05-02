@@ -6,7 +6,7 @@ import {
   PageSection,
   Title
 } from '@patternfly/react-core';
-import customData from './../../dummyData.json';
+import realData from './../../data.json';
 import custompHData from './../../dummyDataPHLevels.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './pHLevels.css';
@@ -18,9 +18,16 @@ const PHLevels = () => {
   const [selected, setSelected] = useState('');
   const [pHGraphDataState, setpHGraphDataState] = useState(custompHData["1Hour"]);
 
-  // data
-  const phData = customData.data[0].ph;
+  const pHData = realData.data[realData.data.length - 1].pH;
 
+  // data
+  const chartData: object[] = [];
+  realData.data.forEach((element, index) => {
+    const newObject = { name: index, x: index, y: element.pH };
+    chartData.push(newObject);
+  });
+
+  console.log('what is chartdata' + chartData);
   // pass data based on selection
   function pHGraphData(selectedState) {
     if(selectedState == '5 Hours') {
@@ -76,12 +83,14 @@ const PHLevels = () => {
     { value: '1 Year', disabled: false }
   ];
 
+  console.log('what is' + pHGraphDataState);
+
   return (
     <React.Fragment>
       <PageSection>
         <Title size="2xl">
           pH Levels:
-          <span> {phData}</span>
+          <span> {pHData}</span>
         </Title>
       </PageSection>
       <PageSection>
@@ -109,7 +118,7 @@ const PHLevels = () => {
           ariaTitle="Line chart example"
           containerComponent={<ChartVoronoiContainer labels={({ datum }) => `${datum.name}: ${datum.y}`} constrainToVisibleArea />}
           height={250}
-          maxDomain={{y: 10}}
+          maxDomain={{y: 50}}
           minDomain={{y: 0}}
           padding={{
             bottom: 50,
@@ -123,7 +132,7 @@ const PHLevels = () => {
           <ChartAxis dependentAxis showGrid tickValues={[2, 5, 8]} />
           <ChartGroup>
             <ChartLine
-              data={pHGraphDataState}
+              data={chartData}
             />
           </ChartGroup>
         </Chart>

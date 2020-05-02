@@ -10,13 +10,13 @@ const WaveConditions = () => {
 
   const checkCondition = (condition: number) => {
  
-    if(condition >= 15) {
+    if(condition >= 25) {
       return <BoltIcon/>
     }
-    if(condition >= 10 && condition < 15 ) {
+    if(condition >= 15 && condition < 25 ) {
       return <CloudShowersHeavyIcon/>
     }
-    if(condition > 0 && condition < 10) {
+    if(condition < 15) {
       return <WaterIcon/>
     }
   };
