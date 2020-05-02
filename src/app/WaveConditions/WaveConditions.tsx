@@ -8,16 +8,16 @@ const WaveConditions = () => {
 
   console.log(customData.data.length);
 
-  const checkCondition = (condition: number) => {
+  const checkCondition = (condition) => {
  
     if(condition >= 25) {
-      return <BoltIcon/>
+      return <WaterIcon/>
     }
     if(condition >= 15 && condition < 25 ) {
       return <CloudShowersHeavyIcon/>
     }
     if(condition < 15) {
-      return <WaterIcon/>
+      return <BoltIcon/>
     }
   };
 
