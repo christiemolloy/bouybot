@@ -7,16 +7,19 @@ import {
   Title
 } from '@patternfly/react-core';
 import realData from './../data.json';
-import realpHData from './../data.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './pHLevels.css';
 
 const PHLevels = () => {
-
+  const visibleData: object[] = [];
+  for (let i = realData.data.length - 75; i < realData.data.length; i++) {
+    const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+    visibleData.push(newVisObject);
+  }
   // state
   const [isExpanded, setIsExpanded] = useState(false);
   const [selected, setSelected] = useState('');
-  const [pHGraphDataState, setpHGraphDataState] = useState(realpHData["1Hour"]);
+  const [pHGraphDataState, setpHGraphDataState] = useState(visibleData);
 
   const pHData = realData.data[realData.data.length - 1].pH;
 
@@ -30,29 +33,109 @@ const PHLevels = () => {
   console.log('what is chartdata' + chartData);
   // pass data based on selection
   function pHGraphData(selectedState) {
-    if(selectedState == '5 Hours') {
-      return setpHGraphDataState(realpHData["5Hours"]);
+  var numdata = 0
+
+    if(selectedState == '75 Data Points') {
+      numdata = 75;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-75;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      console.log('what is visibleData' + visibleData);
+      console.log(JSON.stringify(visibleData));
+  
+      return setpHGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Week') {
-      return setpHGraphDataState(realpHData["1Week"]);
+    else if(selectedState == '150 Data Points') {
+      numdata = 150;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-150;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Month') {
-      return setpHGraphDataState(realpHData["1Month"]);
+    else if(selectedState == '225 Data Points') {
+      numdata = 225;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-225;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
-    else if(selectedState == '3 Months') {
-      return setpHGraphDataState(realpHData["3Months"]);
+    else if(selectedState == '300 Data Points') {
+      numdata = 300;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-300;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
-    else if(selectedState == '6 Months') {
-      return setpHGraphDataState(realpHData["6Months"]);
+    else if(selectedState == '375 Data Points') {
+      numdata = 375;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-375;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Year') {
-      return setpHGraphDataState(realpHData["1Year"]);
+    else if(selectedState == '450 Data Points') {
+      numdata = 450;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-450;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
-    else {
-      return setpHGraphDataState(realpHData["1Hour"]);
+    else if(selectedState == '525 Data Points') {
+      numdata = 525;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-525;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
+    }
+    else if(selectedState == '600 Data Points') {
+      numdata = 600;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-600;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setpHGraphDataState(visibleData);
     }
   }
-
+  
   const onToggle = isExpanded => {
     setIsExpanded(isExpanded);
   };
@@ -60,6 +143,11 @@ const PHLevels = () => {
   const onSelect = (event, selection, isPlaceholder) => {
     if (isPlaceholder) {
       clearSelection();
+      setSelected(selection);
+      pHGraphData(selection);
+      console.log('did it call temp graph data' + selection);
+      setIsExpanded(false);
+      console.log('selected:', selection);
     }
     else {
       setSelected(selection);
@@ -75,12 +163,14 @@ const PHLevels = () => {
   };
 
   const options = [
-    { value: '1 Hour', disabled: false, isPlaceholder: true },
-    { value: '5 Hours', disabled: false },
-    { value: '1 Week', disabled: false },
-    { value: '1 Month', disabled: false },
-    { value: '6 Months', disabled: false },
-    { value: '1 Year', disabled: false }
+    { value: '75 Data Points', disabled: false, isPlaceholder: true },
+    { value: '150 Data Points', disabled: false },
+    { value: '225 Data Points', disabled: false },
+    { value: '300 Data Points', disabled: false },
+    { value: '375 Data Points', disabled: false },
+    { value: '450 Data Points', disabled: false },
+    { value: '525 Data Points', disabled: false },
+    { value: '600 Data Points', disabled: false }
   ];
 
   console.log('what is' + pHGraphDataState);
@@ -128,11 +218,10 @@ const PHLevels = () => {
           }}
           width={600}
         >
-          <ChartAxis tickValues={[2, 3, 4]} />
-          <ChartAxis dependentAxis showGrid tickValues={[2, 5, 8]} />
+
           <ChartGroup>
             <ChartLine
-              data={chartData}
+              data={pHGraphDataState}
             />
           </ChartGroup>
         </Chart>

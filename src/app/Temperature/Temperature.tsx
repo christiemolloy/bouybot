@@ -7,23 +7,29 @@ import {
   Title
 } from '@patternfly/react-core';
 import realData from './../data.json';
-import realTemperatureData from './../data.json';
+//import realTemperatureData from './../data.json';
 import { Chart, ChartAxis, ChartGroup, ChartLine, ChartVoronoiContainer } from '@patternfly/react-charts';
 import './Temperature.css';
 
 const Temperature = () => {
-
+  const visibleData: object[] = [];
+  for (let i = realData.data.length - 75; i < realData.data.length; i++) {
+    const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+    visibleData.push(newVisObject);
+  }
   // state
   const [isExpanded, setIsExpanded] = useState(false);
   const [selected, setSelected] = useState('');
-  const [temperatureGraphDataState, setTemperatureGraphDataState] = useState(realTemperatureData["1Hour"]);
+  const [temperatureGraphDataState, setTemperatureGraphDataState] = useState(visibleData);
+
+  console.log('what is temperr' + temperatureGraphDataState);
 
   const temperatureData = realData.data[realData.data.length - 1].temp;
 
   // create new array and push the new objects to pass through to the chart
   const chartData: object[] = [];
   realData.data.forEach((element, index) => {
-    const newObject = { name: index, x: index, y: element.temp };
+    const newObject = { name: index, x: index, y: element.temp }; 
     chartData.push(newObject);
   });
 
@@ -31,28 +37,112 @@ const Temperature = () => {
 
   // pass data based on selection
   function temperatureGraphData(selectedState) {
-    if(selectedState == '5 Hours') {
-      return setTemperatureGraphDataState(realTemperatureData["5Hours"]);
+  var numdata = 0
+
+    if(selectedState == '75 Data Points') {
+      numdata = 75;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-75;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      console.log('what is visibleData' + visibleData);
+      console.log(JSON.stringify(visibleData));
+  
+      return setTemperatureGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Week') {
-      return setTemperatureGraphDataState(realTemperatureData["1Week"]);
+    else if(selectedState == '150 Data Points') {
+      numdata = 150;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-150;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Month') {
-      return setTemperatureGraphDataState(realTemperatureData["1Month"]);
+    else if(selectedState == '225 Data Points') {
+      numdata = 225;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-225;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
-    else if(selectedState == '3 Months') {
-      return setTemperatureGraphDataState(realTemperatureData["3Months"]);
+    else if(selectedState == '300 Data Points') {
+      numdata = 300;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-300;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
-    else if(selectedState == '6 Months') {
-      return setTemperatureGraphDataState(realTemperatureData["6Months"]);
+    else if(selectedState == '375 Data Points') {
+      numdata = 375;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-375;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
-    else if(selectedState == '1 Year') {
-      return setTemperatureGraphDataState(realTemperatureData["1Year"]);
+    else if(selectedState == '450 Data Points') {
+      numdata = 450;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-450;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
-    else {
-      return setTemperatureGraphDataState(realTemperatureData["1Hour"]);
+    else if(selectedState == '525 Data Points') {
+      numdata = 525;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-525;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
+    }
+    else if(selectedState == '600 Data Points') {
+      numdata = 600;
+      visibleData.length = 0;
+      var startingIndex = realData.data.length-600;
+      if (startingIndex < 0)
+        startingIndex = 0;
+      for (let i = startingIndex; i < realData.data.length; i++) {
+        const newVisObject = {name: realData.data.length - i, x: realData.data.length - i, y: realData.data[i].temp}; 
+        visibleData.push(newVisObject);
+      }
+      return setTemperatureGraphDataState(visibleData);
     }
   }
+  console.log('what is visibleData' + visibleData);
+  console.log(JSON.stringify(visibleData));
+  console.log('what is temp2' + temperatureGraphDataState)
+
 
   const onToggle = isExpanded => {
     setIsExpanded(isExpanded);
@@ -61,6 +151,11 @@ const Temperature = () => {
   const onSelect = (event, selection, isPlaceholder) => {
     if (isPlaceholder) {
       clearSelection();
+      setSelected(selection);
+      temperatureGraphData(selection);
+      console.log('did it call temp graph data' + selection);
+      setIsExpanded(false);
+      console.log('selected:', selection);
     }
     else {
       setSelected(selection);
@@ -77,16 +172,18 @@ const Temperature = () => {
   };
 
   const options = [
-    { value: '1 Hour', disabled: false, isPlaceholder: true },
-    { value: '5 Hours', disabled: false },
-    { value: '1 Week', disabled: false },
-    { value: '1 Month', disabled: false },
-    { value: '6 Months', disabled: false },
-    { value: '1 Year', disabled: false }
+    { value: '75 Data Points', disabled: false, isPlaceholder: true },
+    { value: '150 Data Points', disabled: false },
+    { value: '225 Data Points', disabled: false },
+    { value: '300 Data Points', disabled: false },
+    { value: '375 Data Points', disabled: false },
+    { value: '450 Data Points', disabled: false },
+    { value: '525 Data Points', disabled: false },
+    { value: '600 Data Points', disabled: false }
   ];
 
   console.log('what is' + temperatureGraphDataState);
-  // console.log('what is this' + customTemperatureData["1Year"]);
+  // console.log('what is this' + customTemperatureData[x Data Points]);
 
   return (
     <React.Fragment>
@@ -131,11 +228,9 @@ const Temperature = () => {
           }}
           width={600}
         >
-          <ChartAxis tickValues={[2, 3, 4]} />
-          <ChartAxis dependentAxis showGrid tickValues={[2, 5, 8]} />
           <ChartGroup>
             <ChartLine
-              data={chartData}
+              data={temperatureGraphDataState}
             />
           </ChartGroup>
         </Chart>
