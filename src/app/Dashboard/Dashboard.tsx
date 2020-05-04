@@ -21,16 +21,16 @@ const Dashboard = () => {
   
     console.log(customData.data.length);
   
-    const checkCondition = (condition: number) => {
-   
-      if(condition >= 25) {
-        return <BoltIcon/>
+    const checkConditionnumber = (condition: number) => {
+ 
+      if(condition <= 25) {
+        return "calm"
       }
       else if(condition >= 15 && condition < 25 ) {
-        return <CloudShowersHeavyIcon/>
+        return "rough"
       }
       else{
-        return <WaterIcon/>
+        return "stormy"
       }
     };
 
@@ -45,7 +45,7 @@ const Dashboard = () => {
           <NavLink exact to={routePathWaveConditions}>
             Wave conditions:
           </NavLink>
-          <span> {dashboardDataWaveConditions}</span>
+          <span> {checkConditionnumber(dashboardDataWaveConditions)}</span>
         </Title>
       </PageSection>
       <PageSection>

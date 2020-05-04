@@ -5,12 +5,13 @@ import customData from './../data.json';
 
 const WaveConditions = () => {
   const waveConditionData = customData.data[customData.data.length - 1].accelZ;
+  
 
   console.log(customData.data.length);
 
   const checkCondition = (condition: number) => {
  
-    if(condition >= 25) {
+    if(condition <= 25) {
       return <WaterIcon/>
     }
     else if(condition >= 15 && condition < 25 ) {
@@ -21,12 +22,25 @@ const WaveConditions = () => {
     }
   };
 
+  const checkConditionnumber = (condition: number) => {
+ 
+    if(condition <= 25) {
+      return "calm"
+    }
+    else if(condition >= 15 && condition < 25 ) {
+      return "rough"
+    }
+    else{
+      return "stormy"
+    }
+  };
+
   return (
     <React.Fragment>
       <PageSection>
         <Title size="2xl">
           Wave Conditions: 
-          <span> {waveConditionData}</span>
+          <span> {checkConditionnumber(waveConditionData)}</span>
         </Title>
       </PageSection>
       <PageSection style={{ textAlign: 'center' }}>
